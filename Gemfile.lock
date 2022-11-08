@@ -1,21 +1,15 @@
 PATH
   remote: .
   specs:
-    google_analytics_presenter_plugin (1.0.0)
-      dry-configurable (> 0.1, <= 7.0)
+    google_analytics_presenter_plugin (2.0.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    concurrent-ruby (1.1.10)
-    dry-configurable (0.15.0)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 0.6)
-    dry-core (0.8.0)
-      concurrent-ruby (~> 1.0)
     rake (13.0.6)
 
 PLATFORMS
+  ruby
   x86_64-darwin-20
   x86_64-linux
 

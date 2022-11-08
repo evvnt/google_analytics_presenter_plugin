@@ -12,8 +12,7 @@ module Coprl
           end
 
           def render_header_google_analytics(pom, render:)
-            ga_measurement_ids = pom.context[:ga_measurement_ids]
-            return if ga_measurement_ids.blank?
+            ga_measurement_ids = pom.context[:ga_measurement_ids] || []
 
             render.call(:erb, :google_analytics_header,
                         views: view_dir_google_analytics(pom),

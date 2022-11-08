@@ -1,9 +1,14 @@
 <%# Global site tag (gtag.js) - Google Analytics %>
-<script async src="https://www.googletagmanager.com/gtag/js?id=<%= measurement_id %>"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<% measurement_ids.each do |measurement_id| %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= measurement_id %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', '<%= measurement_id %>');
+    gtag('config', '<%= measurement_id %>', { 'debug_mode':true });
+  </script>
+<% end %>
+<script>
+  <%= raw File.read(File.expand_path('../actions/gtag_action.js', __dir__)  ) %>
 </script>

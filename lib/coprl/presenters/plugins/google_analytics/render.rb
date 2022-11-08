@@ -1,12 +1,10 @@
-# frozen_string_literal: true
-
 module Coprl
   module Presenters
     module Plugins
       module GoogleAnalytics
         module WebClientComponents
           def view_dir_google_analytics(_pom)
-            File.join(__dir__, '../../../../../../..', 'views', 'components')
+            File.join(__dir__, '../../../../..', 'views', 'components')
           end
 
           def render_google_analytics(pom, render:, components:, index:)
@@ -14,14 +12,19 @@ module Coprl
           end
 
           def render_header_google_analytics(pom, render:)
-            unless Settings.config.measurement_id
-              raise Error, 'Missing measurement_id in plugin configuration'
-            end
+            ga_measurement_ids = pom.context[:ga_measurement_ids]
+            return if ga_measurement_ids.blank?
 
             render.call(:erb, :google_analytics_header,
                         views: view_dir_google_analytics(pom),
-                        locals: { measurement_id: Settings.config.measurement_id })
+                        locals: { measurement_ids: ga_measurement_ids })
           end
+
+          def render_gtag_event(comp, render:, components:, index:)
+            render.call :erb, :gtag_event, views: view_dir_google_analytics(comp),
+                        locals: {comp: comp, components: components, index: index}
+          end
+
         end
       end
     end

@@ -6,7 +6,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '<%= measurement_id %>', { 'debug_mode':true });
+    gtag('config', '<%= measurement_id %>', { 'debug_mode': <%= debug_mode %> });
   </script>
 <% end %>
 <script>

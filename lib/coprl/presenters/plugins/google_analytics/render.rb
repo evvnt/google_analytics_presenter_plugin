@@ -16,7 +16,7 @@ module Coprl
 
             render.call(:erb, :google_analytics_header,
                         views: view_dir_google_analytics(pom),
-                        locals: { measurement_ids: ga_measurement_ids })
+                        locals: { measurement_ids: ga_measurement_ids, debug_mode: ENV['debug_mode'] == 'true' })
           end
 
           def render_gtag_event(comp, render:, components:, index:)

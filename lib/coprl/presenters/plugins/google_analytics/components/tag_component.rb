@@ -4,12 +4,12 @@ module Coprl
   module Presenters
     module Plugins
       module GoogleAnalytics
-        class GoogleAnalyticsComponent < DSL::Components::Base
+        class TagComponent < DSL::Components::Base
           attr_reader :measurement_id
 
           def initialize(measurement_id, **attributes, &block)
             @measurement_id = measurement_id
-            super(type: :google_analytics, **attributes, &block)
+            super(type: :google_analytics_tag, **attributes, &block)
             expand!
           end
         end

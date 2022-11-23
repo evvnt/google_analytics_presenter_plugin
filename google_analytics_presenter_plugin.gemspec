@@ -21,6 +21,4 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 2'
   spec.add_development_dependency 'rake', '~> 13'
-
-  spec.add_runtime_dependency 'dry-configurable', '> 0.1', '<= 7.0' # TODO: fix range? (from COPRL)
 end

@@ -11,7 +11,7 @@ module Coprl
       module GoogleAnalytics
         module DSLComponents
           def google_analytics(measurement_id, **attributes, &block)
-            self << GoogleAnalytics::TagComponent.new(
+            self << Components::TagComponent.new(
               measurement_id,
               **attributes,
               parent: self,
@@ -20,7 +20,7 @@ module Coprl
           end
 
           def create_ga_event(event_name, event_data, **attributes, &block)
-            self << GoogleAnalytics::GtagEvent.new(
+            self << Components::GtagEvent.new(
               event_name,
               event_data,
               **attributes,

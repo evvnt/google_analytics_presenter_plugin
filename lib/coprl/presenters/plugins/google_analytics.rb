@@ -31,8 +31,15 @@ module Coprl
         end
 
         module DSLEventActions
-          def trigger_ga_event(event_name, event_data, **attributes, &block)
-            self << GoogleAnalytics::Action.new(event_name, event_data, parent: self, **attributes, &block)
+          def trigger_ga_event(event_name, event_data, once: false, **attributes, &block)
+            self << GoogleAnalytics::Action.new(
+              event_name,
+              event_data,
+              parent: self,
+              once: once,
+              **attributes,
+              &block
+            )
           end
         end
 
@@ -41,7 +48,8 @@ module Coprl
             params = action.options.to_h.merge(
               __parent_id__: parent_id,
               event_name: action.event_name,
-              event_data: action.event_data
+              event_data: action.event_data,
+              signature: action.signature
             )
             # Type, URL, Options, Params (passed into javascript event/action classes)
             [action.type, nil, {}, params]
